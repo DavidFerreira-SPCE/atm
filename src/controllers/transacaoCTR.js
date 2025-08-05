@@ -33,3 +33,5 @@ const postTransacao = async (req, res) => {
         res.status(500).json({ error: 'Falha em cadastrar a transação' });
     }
 };
+
+module.exports = { getByIDTransacao, getTransacao, postTransacao }
