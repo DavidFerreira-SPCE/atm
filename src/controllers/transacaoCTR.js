@@ -31,7 +31,7 @@ const createResumoFin = async(req,res) => {
 }
 
 const postTransacao = async (req, res) => {
-    const { descricao, valor, tipo } = req.params;
+    const { descricao, valor, tipo } = req.body;
     try {
         const  add  = await pool.query('INSERT INTO transacoes (descricao, valor, tipo) VALUES ($1, $2, $3) RETURNING *',
             [ descricao, valor, tipo ]
