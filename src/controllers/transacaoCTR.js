@@ -1,9 +1,9 @@
 const pool = require('../config/db.js');
 
 const getByIDTransacao = async (req,res) => {
-     const { id } = req.body;
+     const { id } = req.params;
     try {
-        const { verify } = await pool.search('SELECT * FROM transacoes WHERE id = $1');
+        const verify  = await pool.search('SELECT * FROM transacoes WHERE id = $1');
         res.status(200).json(verify.rows);
 } catch (err) {
         console.error('Falha em listar as transações deste usuário', err);
@@ -13,7 +13,7 @@ const getByIDTransacao = async (req,res) => {
 
 const getTransacao = async (_,res) => {
         try {
-        const { list } = await pool.search('SELECT * FROM transacoes');
+        const list = await pool.search('SELECT * FROM transacoes');
         res.status(200).json(list.rows);
     } catch (err) {
         console.error('Falha em listar as transações', err);
@@ -21,10 +21,19 @@ const getTransacao = async (_,res) => {
     }
 };
 
+const createResumoFin = async(req,res) => {
+        try {
+            const EntryQuery = await pool.search('') 
+            const ExitQuery = await pool.search('')
+        } catch (error) {
+
+        }
+}
+
 const postTransacao = async (req, res) => {
     const { descricao, valor, tipo } = req.params;
     try {
-        const { add } = await pool.query('INSERT INTO transacoes VALUES descricao = $1, valor = $2, tipo = $3 RETURNING *',
+        const  add  = await pool.query('INSERT INTO transacoes VALUES descricao = $1, valor = $2, tipo = $3 RETURNING *',
             [ descricao, valor, tipo ]
         );
         res.status(200).json(add.rows)
