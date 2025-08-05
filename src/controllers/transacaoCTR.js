@@ -33,7 +33,7 @@ const createResumoFin = async(req,res) => {
 const postTransacao = async (req, res) => {
     const { descricao, valor, tipo } = req.params;
     try {
-        const  add  = await pool.query('INSERT INTO transacoes VALUES descricao = $1, valor = $2, tipo = $3 RETURNING *',
+        const  add  = await pool.query('INSERT INTO transacoes (descricao, valor, tipo) VALUES ($1, $2, $3) RETURNING *',
             [ descricao, valor, tipo ]
         );
         res.status(200).json(add.rows)
@@ -43,4 +43,4 @@ const postTransacao = async (req, res) => {
     }
 };
 
-module.exports = { getByIDTransacao, getTransacao, postTransacao }
+module.exports = { getByIDTransacao, getTransacao, postTransacao, createResumoFin }
