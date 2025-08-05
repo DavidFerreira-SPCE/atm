@@ -13,7 +13,7 @@ const getByIDTransacao = async (req,res) => {
 
 const getTransacao = async (_,res) => {
         try {
-        const { list } = await pool.search('SELECT * FROM transacoeS');
+        const { list } = await pool.search('SELECT * FROM transacoes');
         res.status(200).json(list.rows);
     } catch (err) {
         console.error('Falha em listar as transações', err);
