@@ -4,7 +4,7 @@ const pool = require('./config/db.js');
 const transacaoRoutes = require('./routes/transacaoRoutes.js');
 
 app.use(express.json());
-app.use('/transacoes', transacaoRoutes);
+app.use('/', transacaoRoutes);
 
 
 const PORT = 3000;
