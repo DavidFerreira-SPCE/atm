@@ -12,4 +12,4 @@ pool.connect()
     .then(() => console.log('Connectado ao Banco...'))
     .catch(err => console.error('Algo deu errado, tente novamente...', err));
 
-module.exports = pool;
+module.exports = pool; 

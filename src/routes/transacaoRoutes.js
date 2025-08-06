@@ -10,4 +10,4 @@ router.get('/transacao/:id',getByIDTransacao)
 router.get('/resumo',createResumoFin)
 router.post('/transacao',postTransacao)
 
-module.exports = router
+module.exports = router 
